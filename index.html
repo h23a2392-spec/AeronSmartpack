@@ -68,7 +68,6 @@
     margin: auto;
   }
 
-  /* Survival Card Box */
   .survival-box {
     background: #161616;
     border: 1px solid #3b3b3b;
@@ -98,12 +97,37 @@
 </style>
 
 <script>
+// Fallback Maps
 function openMaps() {
   window.location.href = "geo:0,0?q=nearby";
+
   setTimeout(() => {
     window.location.href = "https://www.google.com/maps/search/nearby";
-  }, 1200);
+  }, 800);
 }
+
+// Auto-load user JSON
+async function loadUser() {
+  const param = new URLSearchParams(window.location.search);
+  const id = param.get("id");
+  if (!id) return;
+
+  try {
+    const res = await fetch(`data/${id}.json`);
+    const user = await res.json();
+
+    document.getElementById("name").innerText = user.ownerName;
+    document.getElementById("country").innerText = user.country;
+    document.getElementById("blood").innerText = user.bloodType;
+    document.getElementById("allergy").innerText = user.allergies;
+    document.getElementById("contact").innerText = user.emergencyContact;
+    document.getElementById("found").innerText = user.ifFound;
+
+  } catch (err) {
+    console.log("User data not found.");
+  }
+}
+window.onload = loadUser;
 </script>
 
 </head>
@@ -113,64 +137,50 @@ function openMaps() {
 
     <h1>AERON SMARTPACK</h1>
 
-    <!-- ID -->
+    <!-- ID BOX -->
     <div class="survival-box">
       <div class="survival-title">ID</div>
 
-      <div class="survival-line">Name: {{OwnerName}}</div>
-      <div class="survival-line">Country: {{Country}}</div>
-      <div class="survival-line">Blood Type: {{BloodType}}</div>
-      <div class="survival-line">Allergies: {{Allergies}}</div>
-      <div class="survival-line">Emergency Contact: {{EmergencyContact}}</div>
-      <div class="survival-line">If Found: {{IfFound}}</div>
+      <div class="survival-line">Name: <span id="name">Loading...</span></div>
+      <div class="survival-line">Country: <span id="country">Loading...</span></div>
+      <div class="survival-line">Blood Type: <span id="blood">Loading...</span></div>
+      <div class="survival-line">Allergies: <span id="allergy">Loading...</span></div>
+      <div class="survival-line">Emergency Contact: <span id="contact">Loading...</span></div>
+      <div class="survival-line">If Found: <span id="found">Loading...</span></div>
 
       <hr style="margin:20px 0; border-color:#333;" />
 
-      <!-- PREMIUM SURVIVAL GUIDE -->
+      <!-- SURVIVAL GUIDE -->
       <div class="survival-title">SURVIVAL GUIDE</div>
 
-      <!-- SOS & FIRE -->
-      <div class="survival-line"><b>SOS Signal:</b> 3 flashes / 3 whistles / 3 knocks = universal distress signal</div>
-      <div class="survival-line"><b>Fire Start:</b> dry leaves → thin twigs → thicker sticks; protect from wind</div>
+      <div class="survival-line"><b>SOS Signal:</b> 3 flashes / 3 whistles / 3 knocks = universal distress call</div>
 
-      <!-- WATER -->
-      <div class="survival-line"><b>Water Safety:</b> clear water → filter with cloth → boil 5–10 minutes</div>
-      <div class="survival-line"><b>Avoid:</b> stagnant water, chemical smell, algae bloom</div>
+      <div class="survival-line"><b>Fire:</b> dry leaves → twigs → sticks; shield from wind</div>
 
-      <!-- FOOD -->
-      <div class="survival-line"><b>Food Rule:</b> avoid white sap, bitter taste, strong smell, weird color</div>
-      <div class="survival-line"><b>Safe Plants:</b> usually smells mild, no sap, smooth surface</div>
+      <div class="survival-line"><b>Water:</b> filter cloth → boil 5–10 min; avoid stagnant/chemical water</div>
 
-      <!-- WEATHER -->
-      <div class="survival-line"><b>Storm / Lightning:</b> stay low, avoid tall trees, avoid water</div>
-      <div class="survival-line"><b>Heatstroke:</b> shade → rest → sip water slowly → cool neck/armpit</div>
-      <div class="survival-line"><b>Hypothermia:</b> remove wet clothes, stay dry, use body heat</div>
+      <div class="survival-line"><b>Food Rule:</b> avoid bitter, strong smell, white sap</div>
 
-      <!-- INJURY -->
-      <div class="survival-line"><b>Bleeding:</b> apply direct pressure 10–15 min, do NOT check wound repeatedly</div>
-      <div class="survival-line"><b>Fracture:</b> immobilize; don’t straighten bone</div>
-      <div class="survival-line"><b>Burn:</b> cool under running water 20 minutes, don’t apply oil</div>
+      <div class="survival-line"><b>Storm:</b> avoid tall trees, water, open field</div>
+      <div class="survival-line"><b>Heatstroke:</b> rest → shade → sip water → cool neck</div>
+      <div class="survival-line"><b>Hypothermia:</b> remove wet, stay dry, body heat</div>
 
-      <!-- ANIMALS -->
-      <div class="survival-line"><b>Wild Animals:</b> don’t run; make yourself appear bigger; back away slowly</div>
-      <div class="survival-line"><b>Snake Bite:</b> no sucking venom, no cutting; keep limb still; go hospital</div>
+      <div class="survival-line"><b>Bleeding:</b> pressure 10–15 min nonstop</div>
+      <div class="survival-line"><b>Fracture:</b> immobilize, do not straighten</div>
+      <div class="survival-line"><b>Burn:</b> run water 20 min; no oil</div>
 
-      <!-- NAVIGATION -->
-      <div class="survival-line"><b>Navigation:</b> Sun rises East → sets West; follow river downstream</div>
-      <div class="survival-line"><b>Night Nav:</b> look for bright star alignment; avoid moving unnecessarily</div>
+      <div class="survival-line"><b>Animals:</b> don’t run; appear big; back away</div>
+      <div class="survival-line"><b>Snake Bite:</b> no cutting, no sucking; keep still</div>
 
-      <!-- SIGNALS -->
-      <div class="survival-line"><b>Day Signal:</b> reflect sunlight using metal/phone</div>
-      <div class="survival-line"><b>Night Signal:</b> flashlight in triple pattern</div>
+      <div class="survival-line"><b>Navigation:</b> Sun E→W; follow river downstream</div>
+      <div class="survival-line"><b>Night:</b> conserve energy; move only if needed</div>
 
-      <!-- SURVIVAL PSYCHOLOGY -->
+      <div class="survival-line"><b>Signals:</b> reflective day, flashlight triple at night</div>
+
       <div class="survival-line"><b>STOP Rule:</b> Sit → Think → Observe → Plan</div>
-      <div class="survival-line"><b>Rule of 3:</b> 3 min no air, 3 hrs no shelter, 3 days no water, 3 weeks no food</div>
 
-      <!-- LOST -->
-      <div class="survival-line"><b>If Lost:</b> stay put, conserve energy, find high ground, use signals</div>
+      <div class="survival-line"><b>If Lost:</b> stay put, conserve energy, seek high ground</div>
     </div>
-
 
     <!-- MAP & TOOLS -->
     <h2>🧭 Map & Tools</h2>
@@ -179,7 +189,7 @@ function openMaps() {
       <li>🧭 <a href="https://www.google.com/search?q=online+compass" target="_blank">Kompas Online</a></li>
       <li>🕌 <a href="https://qiblafinder.withgoogle.com/" target="_blank">Arah Kiblat</a></li>
       <li>🚶‍♂️ <a href="https://www.google.com/streetview/" target="_blank">Street View</a></li>
-      <li>⛰️ <a href="https://www.opentopomap.org/" target="_blank">Topographic Map</a></li>
+      <li>⛰️ <a href="https://www.opentopomap.org/" target="_blank">Topo Map</a></li>
     </ul>
 
     <!-- TRAVEL -->
@@ -201,7 +211,7 @@ function openMaps() {
       <li>🆘 <a href="https://www.redcross.org/first-aid" target="_blank">First Aid Guide</a></li>
     </ul>
 
-    <!-- COMMS -->
+    <!-- COMM -->
     <h2>🌐 Communication</h2>
     <ul>
       <li>📬 <a href="https://mail.google.com" target="_blank">Gmail</a></li>
@@ -209,14 +219,14 @@ function openMaps() {
     </ul>
 
     <!-- WEATHER -->
-    <h2>💱 Weather & Currency</h2>
+    <h2>🌦 Weather & Currency</h2>
     <ul>
-      <li>🌦️ <a href="https://www.accuweather.com" target="_blank">AccuWeather</a></li>
+      <li>🌦 <a href="https://www.accuweather.com" target="_blank">AccuWeather</a></li>
       <li>💱 <a href="https://www.xe.com" target="_blank">XE Currency</a></li>
     </ul>
 
     <!-- TOOLS -->
-    <h2>🛠️ General Tools</h2>
+    <h2>🛠 Tools</h2>
     <ul>
       <li>🌍 <a href="https://translate.google.com" target="_blank">Google Translate</a></li>
       <li>📏 <a href="https://www.ginifab.com/feeds/cm_to_inch/" target="_blank">Online Ruler</a></li>
@@ -226,9 +236,9 @@ function openMaps() {
     <h2>🩺 Health & Medical</h2>
     <ul>
       <li>🧾 <a href="https://www.mayoclinic.org/symptom-checker" target="_blank">Symptom Checker</a></li>
-      <li>💊 <a href="https://www.drugs.com" target="_blank">Drug Info Checker</a></li>
-      <li>🫀 <a href="https://www.webmd.com" target="_blank">WebMD Health</a></li>
-      <li>🩹 <a href="https://www.healthline.com" target="_blank">Healthline Guide</a></li>
+      <li>💊 <a href="https://www.drugs.com" target="_blank">Drug Info</a></li>
+      <li>🫀 <a href="https://www.webmd.com" target="_blank">WebMD</a></li>
+      <li>🩹 <a href="https://www.healthline.com" target="_blank">Healthline</a></li>
     </ul>
 
     <div class="footer">
