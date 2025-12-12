@@ -72,6 +72,25 @@
     margin: auto;
   }
 
+  /* Survival Card */
+  .survival-box {
+    background: #1a1a1a;
+    border: 1px solid #3b3b3b;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+  }
+  .survival-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffdf8e;
+    margin-bottom: 10px;
+  }
+  .survival-line {
+    margin: 6px 0;
+    font-size: 15px;
+  }
+
   .footer {
     margin-top: 60px;
     text-align: center;
@@ -79,6 +98,19 @@
     font-size: 14px;
   }
 </style>
+
+<script>
+function openMaps() {
+  // Cuba buka Google Maps app
+  window.location.href = "geo:0,0?q=nearby";
+
+  // Fallback kalau tiada Maps → buka web
+  setTimeout(() => {
+    window.location.href = "https://www.google.com/maps/search/nearby";
+  }, 1200);
+}
+</script>
+
 </head>
 
 <body>
@@ -86,10 +118,43 @@
 
     <h1>AERON SMARTPACK</h1>
 
+    <!-- SURVIVAL ID CARD -->
+    <div class="survival-box">
+      <div class="survival-title">SURVIVAL ID</div>
+
+      <div class="survival-line">Name: {{OwnerName}}</div>
+      <div class="survival-line">Country: {{Country}}</div>
+      <div class="survival-line">Blood: {{BloodType}}</div>
+      <div class="survival-line">Allergies: {{Allergies}}</div>
+      <div class="survival-line">Contact: {{EmergencyContact}}</div>
+      <div class="survival-line">If Found: {{IfFound}}</div>
+
+      <hr style="margin:15px 0; border-color:#333;" />
+
+      <div class="survival-title">Critical Survival Guide</div>
+
+      <div class="survival-line">SOS: 3 flashes/sounds</div>
+      <div class="survival-line">Fire: dry leaves + twigs + spark</div>
+      <div class="survival-line">Water: boil / filter</div>
+      <div class="survival-line">Food: avoid white sap or bitter taste</div>
+      <div class="survival-line">Hypo (Cold): shelter, dry body</div>
+      <div class="survival-line">Heatstroke: shade, sip water</div>
+      <div class="survival-line">Animal: back away slowly</div>
+      <div class="survival-line">Bleeding: firm pressure 10min</div>
+      <div class="survival-line">Fracture: immobilize, avoid moving</div>
+      <div class="survival-line">Dehydration: sip water slowly</div>
+
+      <div class="survival-line">Navigation: sun W→E, high ground, stay visible</div>
+      <div class="survival-line">Weather: storm–flood–wind = shelter; hot–cold = layer/shade</div>
+      <div class="survival-line">Signals: 3 = HELP, day = reflective, night = phone light</div>
+      <div class="survival-line">GPS: ON, stay in open area</div>
+    </div>
+
+    <!-- MAP & TOOLS -->
     <h2>🧭 Map & Tools</h2>
     <ul>
-      <li>🗺️ <a href="https://www.google.com/maps" target="_blank">Google Maps</a></li>
-      <li>🧭 <a href="https://www.compass.com/en/compass" target="_blank">Kompas Online</a></li>
+      <li>🗺️ <a href="#" onclick="openMaps()">Google Maps</a></li>
+      <li>🧭 <a href="https://www.google.com/search?q=online+compass" target="_blank">Kompas Online</a></li>
       <li>🕌 <a href="https://qiblafinder.withgoogle.com/" target="_blank">Arah Kiblat</a></li>
       <li>🚶‍♂️ <a href="https://www.google.com/streetview/" target="_blank">Street View</a></li>
       <li>⛰️ <a href="https://www.opentopomap.org/" target="_blank">Topographic Map</a></li>
@@ -130,37 +195,6 @@
       <li>📏 <a href="https://www.ginifab.com/feeds/cm_to_inch/" target="_blank">Online Ruler</a></li>
     </ul>
 
-    <h2>🍽️ Food & Essentials</h2>
-
-    <h3>🕌 Halal Food Finder</h3>
-    <ul>
-      <li>🍱 <a href="https://www.zabihah.com" target="_blank">Zabihah</a></li>
-      <li>🌍 <a href="https://www.halaltrip.com/halal-nearme" target="_blank">HalalTrip — Halal Near Me</a></li>
-      <li>🕌 <a href="https://www.havehalalwilltravel.com" target="_blank">HaveHalalWillTravel</a></li>
-    </ul>
-
-    <h3>🍔 Nearby Food</h3>
-    <ul>
-      <li>🍔 <a href="https://www.google.com/maps/search/food+near+me" target="_blank">Food Near Me</a></li>
-      <li>🍜 <a href="https://www.google.com/maps/search/restaurants+near+me" target="_blank">Restaurants Near Me</a></li>
-      <li>🛒 <a href="https://www.google.com/maps/search/convenience+store+near+me" target="_blank">Convenience Store Near Me</a></li>
-      <li>💧 <a href="https://www.google.com/maps/search/water+refill+station" target="_blank">Water Refill Station</a></li>
-    </ul>
-
-    <h3>🥡 Food Delivery</h3>
-    <ul>
-      <li>🥡 <a href="https://food.grab.com" target="_blank">GrabFood</a></li>
-      <li>🍱 <a href="https://www.foodpanda.com" target="_blank">FoodPanda</a></li>
-      <li>🍕 <a href="https://www.dominos.com" target="_blank">Domino’s Pizza</a></li>
-    </ul>
-
-    <h3>🏕️ Survival Food Tools</h3>
-    <ul>
-      <li>🌿 <a href="https://www.wikihow.com/Find-Edible-Wild-Plants" target="_blank">Edible Wild Plants Guide</a></li>
-      <li>🐟 <a href="https://bushcraftusa.com" target="_blank">Basic Fishing Techniques</a></li>
-      <li>🌾 <a href="https://fallingfruit.org" target="_blank">Foraging Map — Falling Fruit</a></li>
-    </ul>
-
     <h2>🩺 Health & Medical</h2>
     <ul>
       <li>🧾 <a href="https://www.mayoclinic.org/symptom-checker" target="_blank">Symptom Checker</a></li>
@@ -176,4 +210,3 @@
   </div>
 </body>
 </html>
-
