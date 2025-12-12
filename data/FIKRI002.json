@@ -1,8 +1,8 @@
 {
-    "OwnerName": "Muhammad Fikri bin Razak",
-    "Country": "Malaysia",
-    "BloodType": "A+",
-    "Allergies": "Seafood (moderate), Dust (mild)",
-    "EmergencyContact": "+60 11-2180 4421 (Ayah)",
-    "IfFound": "Kindly contact his emergency contact immediately and provide location."
+  "ownerName": "Muhammad Fikri bin Razak",
+  "country": "Malaysia",
+  "bloodType": "A+",
+  "allergies": "Seafood (moderate), Dust (mild)",
+  "emergencyContact": "+60 11-2180 4421 (Ayah)",
+  "ifFound": "Kindly contact his emergency contact immediately and provide location."
 }
