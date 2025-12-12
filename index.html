@@ -12,29 +12,25 @@
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 25px;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   h1 {
     text-align: center;
-    font-size: 38px;
+    font-size: 40px;
     margin-bottom: 40px;
     color: #f5d88a;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    font-weight: 700;
     text-transform: uppercase;
   }
 
   h2 {
     margin-top: 40px;
-    font-size: 26px;
+    font-size: 28px;
     border-left: 5px solid #e4c76f;
     padding-left: 12px;
-  }
-
-  h3 {
-    margin-top: 25px;
-    font-size: 20px;
-    color: #ffdf8e;
+    font-weight: 600;
   }
 
   ul {
@@ -43,23 +39,23 @@
   }
 
   ul li {
-    margin: 8px 0;
-    padding: 8px 12px;
-    background: #1a1a1a;
-    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px 14px;
+    background: #161616;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
     transition: 0.3s;
-    border: 1px solid #292929;
   }
 
   ul li:hover {
-    background: #272727;
-    transform: translateX(4px);
+    background: #222222;
     border-color: #e4c76f;
+    transform: translateX(5px);
   }
 
   a {
     text-decoration: none;
-    color: #f5d88a;
+    color: #ffdf8e;
     font-weight: 600;
   }
 
@@ -72,23 +68,25 @@
     margin: auto;
   }
 
-  /* Survival Card */
+  /* Survival Card Box */
   .survival-box {
-    background: #1a1a1a;
+    background: #161616;
     border: 1px solid #3b3b3b;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 20px;
+    padding: 25px;
+    border-radius: 18px;
   }
+
   .survival-title {
-    font-size: 22px;
-    font-weight: bold;
-    color: #ffdf8e;
-    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #f5d88a;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
   }
+
   .survival-line {
-    margin: 6px 0;
-    font-size: 15px;
+    margin: 8px 0;
+    font-size: 16px;
   }
 
   .footer {
@@ -101,10 +99,7 @@
 
 <script>
 function openMaps() {
-  // Cuba buka Google Maps app
   window.location.href = "geo:0,0?q=nearby";
-
-  // Fallback kalau tiada Maps → buka web
   setTimeout(() => {
     window.location.href = "https://www.google.com/maps/search/nearby";
   }, 1200);
@@ -118,37 +113,64 @@ function openMaps() {
 
     <h1>AERON SMARTPACK</h1>
 
-    <!-- SURVIVAL ID CARD -->
+    <!-- SURVIVAL ID -->
     <div class="survival-box">
       <div class="survival-title">SURVIVAL ID</div>
 
       <div class="survival-line">Name: {{OwnerName}}</div>
       <div class="survival-line">Country: {{Country}}</div>
-      <div class="survival-line">Blood: {{BloodType}}</div>
+      <div class="survival-line">Blood Type: {{BloodType}}</div>
       <div class="survival-line">Allergies: {{Allergies}}</div>
-      <div class="survival-line">Contact: {{EmergencyContact}}</div>
+      <div class="survival-line">Emergency Contact: {{EmergencyContact}}</div>
       <div class="survival-line">If Found: {{IfFound}}</div>
 
-      <hr style="margin:15px 0; border-color:#333;" />
+      <hr style="margin:20px 0; border-color:#333;" />
 
-      <div class="survival-title">Critical Survival Guide</div>
+      <!-- PREMIUM SURVIVAL GUIDE -->
+      <div class="survival-title">CRITICAL SURVIVAL GUIDE</div>
 
-      <div class="survival-line">SOS: 3 flashes/sounds</div>
-      <div class="survival-line">Fire: dry leaves + twigs + spark</div>
-      <div class="survival-line">Water: boil / filter</div>
-      <div class="survival-line">Food: avoid white sap or bitter taste</div>
-      <div class="survival-line">Hypo (Cold): shelter, dry body</div>
-      <div class="survival-line">Heatstroke: shade, sip water</div>
-      <div class="survival-line">Animal: back away slowly</div>
-      <div class="survival-line">Bleeding: firm pressure 10min</div>
-      <div class="survival-line">Fracture: immobilize, avoid moving</div>
-      <div class="survival-line">Dehydration: sip water slowly</div>
+      <!-- SOS & FIRE -->
+      <div class="survival-line"><b>SOS Signal:</b> 3 flashes / 3 whistles / 3 knocks = universal distress signal</div>
+      <div class="survival-line"><b>Fire Start:</b> dry leaves → thin twigs → thicker sticks; protect from wind</div>
 
-      <div class="survival-line">Navigation: sun W→E, high ground, stay visible</div>
-      <div class="survival-line">Weather: storm–flood–wind = shelter; hot–cold = layer/shade</div>
-      <div class="survival-line">Signals: 3 = HELP, day = reflective, night = phone light</div>
-      <div class="survival-line">GPS: ON, stay in open area</div>
+      <!-- WATER -->
+      <div class="survival-line"><b>Water Safety:</b> clear water → filter with cloth → boil 5–10 minutes</div>
+      <div class="survival-line"><b>Avoid:</b> stagnant water, chemical smell, algae bloom</div>
+
+      <!-- FOOD -->
+      <div class="survival-line"><b>Food Rule:</b> avoid white sap, bitter taste, strong smell, weird color</div>
+      <div class="survival-line"><b>Safe Plants:</b> usually smells mild, no sap, smooth surface</div>
+
+      <!-- WEATHER -->
+      <div class="survival-line"><b>Storm / Lightning:</b> stay low, avoid tall trees, avoid water</div>
+      <div class="survival-line"><b>Heatstroke:</b> shade → rest → sip water slowly → cool neck/armpit</div>
+      <div class="survival-line"><b>Hypothermia:</b> remove wet clothes, stay dry, use body heat</div>
+
+      <!-- INJURY -->
+      <div class="survival-line"><b>Bleeding:</b> apply direct pressure 10–15 min, do NOT check wound repeatedly</div>
+      <div class="survival-line"><b>Fracture:</b> immobilize; don’t straighten bone</div>
+      <div class="survival-line"><b>Burn:</b> cool under running water 20 minutes, don’t apply oil</div>
+
+      <!-- ANIMALS -->
+      <div class="survival-line"><b>Wild Animals:</b> don’t run; make yourself appear bigger; back away slowly</div>
+      <div class="survival-line"><b>Snake Bite:</b> no sucking venom, no cutting; keep limb still; go hospital</div>
+
+      <!-- NAVIGATION -->
+      <div class="survival-line"><b>Navigation:</b> Sun rises East → sets West; follow river downstream</div>
+      <div class="survival-line"><b>Night Nav:</b> look for bright star alignment; avoid moving unnecessarily</div>
+
+      <!-- SIGNALS -->
+      <div class="survival-line"><b>Day Signal:</b> reflect sunlight using metal/phone</div>
+      <div class="survival-line"><b>Night Signal:</b> flashlight in triple pattern</div>
+
+      <!-- SURVIVAL PSYCHOLOGY -->
+      <div class="survival-line"><b>STOP Rule:</b> Sit → Think → Observe → Plan</div>
+      <div class="survival-line"><b>Rule of 3:</b> 3 min no air, 3 hrs no shelter, 3 days no water, 3 weeks no food</div>
+
+      <!-- LOST -->
+      <div class="survival-line"><b>If Lost:</b> stay put, conserve energy, find high ground, use signals</div>
     </div>
+
 
     <!-- MAP & TOOLS -->
     <h2>🧭 Map & Tools</h2>
@@ -160,6 +182,7 @@ function openMaps() {
       <li>⛰️ <a href="https://www.opentopomap.org/" target="_blank">Topographic Map</a></li>
     </ul>
 
+    <!-- TRAVEL -->
     <h2>🏨 Travel & Penginapan</h2>
     <ul>
       <li>🏨 <a href="https://www.trivago.com" target="_blank">Trivago</a></li>
@@ -169,6 +192,7 @@ function openMaps() {
       <li>🛏️ <a href="https://www.hostelworld.com" target="_blank">Hostelworld</a></li>
     </ul>
 
+    <!-- EMERGENCY -->
     <h2>🚨 Emergency Tools</h2>
     <ul>
       <li>🚨 <a href="https://sosflashlight.com" target="_blank">SOS Flasher</a></li>
@@ -177,24 +201,28 @@ function openMaps() {
       <li>🆘 <a href="https://www.redcross.org/first-aid" target="_blank">First Aid Guide</a></li>
     </ul>
 
+    <!-- COMMS -->
     <h2>🌐 Communication</h2>
     <ul>
       <li>📬 <a href="https://mail.google.com" target="_blank">Gmail</a></li>
       <li>📡 <a href="https://www.speedtest.net" target="_blank">Speedtest</a></li>
     </ul>
 
+    <!-- WEATHER -->
     <h2>💱 Weather & Currency</h2>
     <ul>
       <li>🌦️ <a href="https://www.accuweather.com" target="_blank">AccuWeather</a></li>
       <li>💱 <a href="https://www.xe.com" target="_blank">XE Currency</a></li>
     </ul>
 
+    <!-- TOOLS -->
     <h2>🛠️ General Tools</h2>
     <ul>
       <li>🌍 <a href="https://translate.google.com" target="_blank">Google Translate</a></li>
       <li>📏 <a href="https://www.ginifab.com/feeds/cm_to_inch/" target="_blank">Online Ruler</a></li>
     </ul>
 
+    <!-- HEALTH -->
     <h2>🩺 Health & Medical</h2>
     <ul>
       <li>🧾 <a href="https://www.mayoclinic.org/symptom-checker" target="_blank">Symptom Checker</a></li>
@@ -210,3 +238,4 @@ function openMaps() {
   </div>
 </body>
 </html>
+
